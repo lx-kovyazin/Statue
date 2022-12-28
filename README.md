@@ -21,7 +21,7 @@ var stateMachine = Statue<Trigger, Light>
     .Define(
         Trigger.TurnOn,
         // You can use a constructor directly..
-        new Transition<Light>(Light.Off, initial).With(() => WriteLine("Turned on"))
+        new Transition<Light>(Light.Off, Light.Red).With(() => WriteLine("Turned on"))
     )
     .Define(
         Trigger.TurnOff,
@@ -50,8 +50,8 @@ Next, you could write traffic light model, that something like this:
 ```C#
 public class TrafficLight
 {
+    private enum Trigger { TurnOn, TurnOff, Switch }
     public enum Light { Off, Red, Yellow, Green }
-    enum Trigger { TurnOn, TurnOff, Switch }
 
     private readonly StateMachine<Trigger, Light> stateMachine;
 
