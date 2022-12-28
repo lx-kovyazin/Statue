@@ -5,7 +5,7 @@ namespace Statue
 {
     public class Statue<Trigger, State>
     {
-        private List<Action<StateMachine<Trigger, State>>> configs
+        private List<Action<StateMachine<Trigger, State>>> defines
             = new List<Action<StateMachine<Trigger, State>>>();
 
         private Statue() { }
@@ -14,14 +14,14 @@ namespace Statue
 
         public Statue<Trigger, State> Define(Trigger trigger, params Transition<State>[] transitions)
         {
-            configs.Add(sm => sm.AddRange(trigger, transitions));
+            defines.Add(sm => sm.AddRange(trigger, transitions));
             return this;
         }
 
         public StateMachine<Trigger, State> Build(State idle)
         {
             var sm = new StateMachine<Trigger, State>(idle);
-            configs.ForEach(add => add(sm));
+            defines.ForEach(add => add(sm));
             return sm;
         }
     }
