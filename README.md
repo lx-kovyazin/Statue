@@ -111,4 +111,4 @@ public class TrafficLightTest
 ```
 ### Congratulations!
 
-Take a look on more examples at *`"./StatueTest/Scenario"`*.
+Take a look on more examples [`here`](https://github.com/lx-kovyazin/Statue/tree/master/StatueTest/Scenario).
